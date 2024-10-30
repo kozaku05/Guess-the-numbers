@@ -1,0 +1,152 @@
+/* ベーススタイル */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f3f4f6;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 10px;
+}
+
+/* タイトルエリアスタイル */
+#title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#title h1 {
+  font-size: 2.5rem;
+  color: #007bff;
+  font-weight: bold;
+}
+
+#title h2 {
+  font-size: 1rem;
+  color: #555;
+  font-style: italic;
+}
+
+#title a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+#title a:hover {
+  color: #0056b3;
+}
+
+/* ナビゲーションスタイル */
+nav {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #007bff;
+}
+
+/* ゲームメインエリア */
+#gameMain {
+  width: 100%;
+  max-width: 600px;
+  min-height: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+/* フッタースタイル */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer a {
+  color: #0d6efd;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 600px) {
+  #title h1 {
+    font-size: 2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  #title a {
+    font-size: 0.9rem;
+  }
+
+  #gameMain {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+}
