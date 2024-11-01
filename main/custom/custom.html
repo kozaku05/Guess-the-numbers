@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess the numbers</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="title">
@@ -22,7 +22,26 @@
         <li><a href="../hard/hard.html">難しい</a></li>
       </ul>
     </nav>
-    <div id="gameMain"></div>
+    <div id="gameMain">
+      <h2>数:1~<h2 id="maxNumber"></h2></h2>
+      <h2>
+        質問回数制限:
+        <p id="remaining_times">20</p>
+      </h2>
+      <br />
+      <h2>
+        質問した回数:
+        <h2 id="questionNumber">0</h2>
+      </h2>
+      <br />
+      <h2 id="information"></h2>
+      <input type="number" placeholder="質問か回答を入力" id="data" />
+      <input type="button" value="回答" onclick="send()" />
+    </div>
+    <div id="finish">
+      <a href="/index.html">ホームに戻る</a>
+      <h2>モード:カスタム</h2>
+    </div>
     <br /><br />
     <footer class="footer">
       <p>&copy; 2024 kozaku05</p>
@@ -30,6 +49,6 @@
       <a href="https://discord.gg/tfyqW3CNZh" target="_blank">Discord</a>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="custom.js"></script>
   </body>
 </html>
