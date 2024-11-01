@@ -67,10 +67,6 @@ nav ul {
   flex-wrap: wrap;
 }
 
-nav ul li {
-  position: relative;
-}
-
 nav ul li a {
   color: #333;
   text-decoration: none;
@@ -84,7 +80,7 @@ nav ul li a:hover {
   color: #007bff;
 }
 
-/* ゲームメインエリア */
+/* メインゲームエリア */
 #gameMain {
   width: 100%;
   max-width: 600px;
@@ -93,13 +89,86 @@ nav ul li a:hover {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
   text-align: center;
 }
 
+#gameMain h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#questionNumber {
+  font-size: 1.2rem;
+  color: #007bff;
+  font-weight: bold;
+}
+
+#information {
+  color: #ff0000;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* 入力ボックスおよびボタンのスタイル */
+#gameMain input[type="number"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#gameMain input[type="button"] {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#gameMain input[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+/* 終了エリアスタイル */
+#finish {
+  display: none;
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#finish h2 {
+  font-size: 1.5rem;
+  color: #28a745;
+  font-weight: bold;
+}
+
+#finish a {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+#finish a:hover {
+  color: #0056b3;
+}
 /* フッタースタイル */
 .footer {
   position: fixed;
@@ -148,5 +217,9 @@ nav ul li a:hover {
   #gameMain {
     padding: 15px;
     font-size: 0.9rem;
+  }
+
+  #gameMain input[type="number"] {
+    width: 100%;
   }
 }
