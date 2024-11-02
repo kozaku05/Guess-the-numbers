@@ -1,5 +1,6 @@
 # Guess-the-numbers
 
+https://kozaku05.github.io/Guess-the-numbers/
 このプロジェクトは、初心者が書いたコードです。自由に改変し、さまざまな機能を追加して楽しんでください。
 
 ## 使用方法
