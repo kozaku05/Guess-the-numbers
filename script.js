@@ -13,7 +13,7 @@ function submit() {
   if (maxNumValue && moveValue) {
     let userReqest = { maxNum: maxNumValue, maxMove: moveValue };
     localStorage.setItem("userReqest", JSON.stringify(userReqest));
-    location.href = "/main/custom/custom.html";
+    location.href = "./main/custom/custom.html";
   } else {
     alert("数値を入れてください");
   }
