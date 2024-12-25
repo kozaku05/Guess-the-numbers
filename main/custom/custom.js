@@ -1,6 +1,8 @@
 let userReqest = JSON.parse(localStorage.getItem("userReqest"));
 let information = document.getElementById("information");
 let Number = Math.floor(Math.random() * parseInt(userReqest.maxNum)) + 1;
+const maxNumber = document.getElementById("maxNumber");
+maxNumber.innerHTML = userReqest.maxNum;
 console.log("正解：" + Number);
 let gameMain = document.getElementById("gameMain");
 let questionNumber = document.getElementById("questionNumber");
@@ -43,7 +45,6 @@ function send() {
       information.innerHTML = "数字を入力してください";
     }
   } else {
-    information.innerHTML = "質問終了:答えを入力してください";
     let data = document.getElementById("data").value;
     if (data == Number) {
       gameMain.style.display = "none";

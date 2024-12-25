@@ -41,7 +41,6 @@ function send() {
       information.innerHTML = "数字を入力してください";
     }
   } else {
-    information.innerHTML = "質問終了:答えを入力してください";
     let data = document.getElementById("data").value;
     if (data == Number) {
       gameMain.style.display = "none";
