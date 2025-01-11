@@ -1,20 +1,14 @@
 localStorage.removeItem("userReqest");
-let customMaxnum = document.getElementById("custom-maxnum");
-let customMove = document.getElementById("custom-move");
-let customSubmit = document.getElementById("submit");
-function custom() {
-  customMaxnum.classList.toggle("show");
-  customMove.classList.toggle("show");
-  customSubmit.classList.toggle("show");
-}
-function submit() {
-  const maxNumValue = customMaxnum.value;
-  const moveValue = customMove.value;
-  if (maxNumValue && moveValue) {
-    let userReqest = { maxNum: maxNumValue, maxMove: moveValue };
-    localStorage.setItem("userReqest", JSON.stringify(userReqest));
+
+const toggleCustom = () => 
+  document.querySelectorAll("#custom-maxnum, #custom-move, button").forEach(el => el.classList.toggle("show"));
+
+const submitCustom = () => {
+  const [maxNum, moves] = ["custom-maxnum", "custom-move"].map(id => document.getElementById(id).value);
+  if (maxNum && moves) {
+    localStorage.setItem("userReqest", JSON.stringify({ maxNum, maxMove: moves }));
     location.href = "./main/custom/custom.html";
   } else {
-    alert("数値を入れてください");
+    alert("数値を入力してください");
   }
-}
+};
