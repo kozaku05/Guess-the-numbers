@@ -4,15 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess the numbers</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../main.css" />
   </head>
   <body>
     <div id="title">
       <h1>数字あてゲーム</h1>
-      <h2>Create &copy;kozaku05</h2>
-      <a href="https://github.com/kozaku05/Guess-the-numbers"
-        >github/SourceCode</a
-      >
+      <h2>Create kozaku05</h2>
+      <a href="https://github.com/kozaku05/Guess-the-numbers">github/SourceCode</a>
     </div>
     <nav>
       <ul>
@@ -20,27 +18,27 @@
         <li><a href="../easy/easy.html">簡単</a></li>
         <li><a href="../normal/normal.html">普通</a></li>
         <li><a href="../hard/hard.html">難しい</a></li>
+        <li onclick="toggleCustom()">カスタム</li>
+        <input type="number" placeholder="最大値を決めてください" id="custom-maxnum"/>
+        <input type="number" placeholder="質問回数上限を決めてください" id="custom-maxcon"/>
+        <input type="submit" onclick="submitCustom()" id="submit">
       </ul>
     </nav>
     <div id="gameMain">
-      <h2>数:1~<span id="maxNumber"></span></h2>
+      <h2>数: 1~<span id="maxNumber"></span></h2>
       <h2>
-        質問回数制限:
-        <p id="remaining_times">20</p>
+        残りの質問回数: <span id="remaining_counts">20</span>
       </h2>
-      <br />
       <h2>
-        質問した回数:
-        <h2 id="questionNumber">0</h2>
+        質問した回数: <span id="questionNumber">0</span>
       </h2>
-      <br />
       <h2 id="information"></h2>
       <input type="number" placeholder="質問か回答を入力" id="data" />
       <input type="button" value="回答" onclick="send()" />
     </div>
     <div id="finish">
       <a href="../../index.html">ホームに戻る</a>
-      <h2>モード:カスタム</h2>
+      <h2>モード: カスタム</h2>
     </div>
     <br /><br />
     <footer class="footer">
@@ -49,6 +47,6 @@
       <a href="https://discord.gg/tfyqW3CNZh" target="_blank">Discord</a>
     </footer>
 
-    <script src="./custom.js"></script>
+    <script src="../js/custom.js"></script>
   </body>
 </html>
