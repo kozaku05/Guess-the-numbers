@@ -19,30 +19,24 @@
         <li><a href="./main/normal/normal.html">普通</a></li>
         <li><a href="./main/hard/hard.html">難しい</a></li>
         <li onclick="toggleCustom()">カスタム</li>
-        <input
-          type="number"
-          placeholder="最大値を決めてください"
-          id="custom-maxnum"
-        />
-        <input
-          type="number"
-          placeholder="移動制限回数を決めてください"
-          id="custom-move"
-        />
-        <input type="submit" onclick="submit()" id="submit" value="送信" />
+        <input type="number" placeholder="最大値を決めてください" id="custom-maxnum"/>
+        <input type="number" placeholder="質問回数上限を決めてください" id="custom-maxcon"/>
+        <input type="submit" onclick="submitCustom()" id="submit">
       </ul>
     </nav>
     <div class="gamerule">
       <h1>ゲーム説明</h1>
       <h2>数字あてゲームについて</h2>
-      <p>ランダムで生成された数字を質問しながら当てるゲームです</p>
+      <p>
+          ランダムで生成された数字を質問しながら当てるゲームです
+      </p>
     </div>
     <div class="moderule">
       <h2>モード説明</h2>
-      <p>簡単: 何度でも質問可能,1～100までの数字</p>
-      <p>普通: 20回まで質問可能,1～300までの数字</p>
-      <p>難しい: 10回まで質問可能,1～300までの数字</p>
-      <p>カスタム: 無制限</p>
+      <p>簡単: 何度でも質問可能, 1～100までの数字</p>
+      <p>普通: 20回まで質問可能, 1～300までの数字</p>
+      <p>難しい: 10回まで質問可能, 1～300までの数字</p>
+      <p>カスタム: 自分で設定をします(制限なし)</p>
     </div>
     <br><br>
     <footer class="footer">
@@ -50,6 +44,7 @@
       <a href="https://github.com/kozaku05" target="_blank">GitHub</a> |
       <a href="https://discord.gg/tfyqW3CNZh" target="_blank">Discord</a>
     </footer>
+
     <script src="./script.js"></script>
   </body>
 </html>
