@@ -67,17 +67,57 @@ nav ul {
   flex-wrap: wrap;
 }
 
-nav ul li a {
+nav ul li {
+  position: relative;
+}
+
+nav ul li a,
+nav ul li {
   color: #333;
   text-decoration: none;
   font-size: 1rem;
   font-weight: bold;
   padding: 10px 15px;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 nav ul li a:hover {
   color: #007bff;
+}
+
+nav ul input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 200px;
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+nav ul li button {
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 8px 15px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li button:hover {
+  background-color: #e1e1e1;
 }
 
 /* メインゲームエリア */
@@ -97,6 +137,13 @@ nav ul li a:hover {
   font-size: 1.2rem;
   color: #333;
   margin-bottom: 10px;
+}
+
+/* remaining_countsに色を追加*/
+#remaining_counts {
+  font-size: 1.2rem;
+  color: #28a745;
+  font-weight: bold;
 }
 
 #questionNumber {
