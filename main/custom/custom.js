@@ -1,66 +1,54 @@
-let userReqest = JSON.parse(localStorage.getItem("userReqest"));
-let information = document.getElementById("information");
-let Number = Math.floor(Math.random() * parseInt(userReqest.maxNum)) + 1;
-const maxNumber = document.getElementById("maxNumber");
-maxNumber.innerHTML = userReqest.maxNum;
-console.log("正解：" + Number);
-let gameMain = document.getElementById("gameMain");
-let questionNumber = document.getElementById("questionNumber");
-let question = 0;
-let remaining_times = document.getElementById("remaining_times");
-let times = parseInt(userReqest.maxMove);
-let finish = document.getElementById("finish");
-finish.style.display = "none";
-document.getElementById("data").addEventListener("keydown", function (event) {
-  if (event.key === "Enter") send();
-});
-remaining_times.innerHTML = times;
+const userRequest = JSON.parse(localStorage.getItem("userReqest"));
+const maxNumber = parseInt(userRequest.maxNum), maxAttempts = parseInt(userRequest.maxCon);
+const secret = Math.floor(Math.random() * maxNumber) + 1;
+let attempts = 0, remainingAttempts = maxAttempts;
+
+console.log(`正解: ${secret}`);
+
+document.getElementById("maxNumber").textContent = maxNumber;
+document.getElementById("remaining_counts").textContent = remainingAttempts;
+document.getElementById("finish").style.display = "none";
+
+document.getElementById("data").addEventListener("keydown", (e) => e.key === "Enter" && handleGuess());
+
 function send() {
-  if (times != 0) {
-    let data = document.getElementById("data").value;
-    if (data) {
-      if (data == Number) {
-        gameMain.style.display = "none";
-        finish.style.display = "block";
-        let answer = document.createElement("h2");
-        let QuestionNumber = document.createElement("h2");
-        QuestionNumber.innerHTML = `あなたの質問回数:${question}`;
-        answer.innerHTML = innerHTML = `正解!答えは:${Number}`;
-        finish.appendChild(answer);
-        finish.appendChild(QuestionNumber);
-      } else if (data < Number) {
-        question += 1;
-        times -= 1;
-        questionNumber.innerHTML = question;
-        remaining_times.innerHTML = times;
-        information.innerHTML = "値が小さいです";
-      } else {
-        question += 1;
-        times -= 1;
-        questionNumber.innerHTML = question;
-        remaining_times.innerHTML = times;
-        information.innerHTML = "値が大きいです";
-      }
-    } else {
-      information.innerHTML = "数字を入力してください";
-    }
+  const inputNumber = Number(document.getElementById("data").value);
+  const information = document.getElementById("information");
+  if (!inputNumber) return (information.textContent = "数字を入力してください");
+
+  attempts++;
+  remainingAttempts--;
+  document.getElementById("questionNumber").textContent = attempts;
+  document.getElementById("remaining_counts").textContent = remainingAttempts;
+
+  if (inputNumber === secret || remainingAttempts === 0) {
+    finish(inputNumber === secret);
   } else {
-    let data = document.getElementById("data").value;
-    if (data == Number) {
-      gameMain.style.display = "none";
-      finish.style.display = "block";
-      let answer = document.createElement("h2");
-      let QuestionNumber = document.createElement("h2");
-      QuestionNumber.innerHTML = `あなたの質問回数:${question}`;
-      answer.innerHTML = innerHTML = `<h2>正解!答えは:${Number}</h2>`;
-      finish.appendChild(answer);
-      finish.appendChild(QuestionNumber);
-    } else {
-      gameMain.style.display = "none";
-      finish.style.display = "block";
-      let message = document.createElement("h2");
-      message.innerHTML = `あなたの負け`;
-      finish.appendChild(message);
-    }
+    information.textContent = inputNumber < secret ? "値が小さいです" : "値が大きいです";
   }
 }
+
+function finish(isWin) {
+  document.getElementById("gameMain").style.display = "none";
+  const fin = document.getElementById("finish");
+  fin.style.display = "block";
+
+  fin.innerHTML = isWin
+    ? `<h2>正解! 答えは: ${secret}</h2><h2>あなたの質問回数: ${attempts}</h2>`
+    : "<h2>あなたの負け</h2>";
+}
+
+localStorage.removeItem("userReqest");
+
+const toggleCustom = () => 
+  document.querySelectorAll("#custom-maxnum, #custom-maxcon, #submit").forEach(el => el.classList.toggle("show"));
+
+const submitCustom = () => {
+  const [maxNum, maxCon] = ["custom-maxnum", "custom-maxcon"].map(id => document.getElementById(id).value);
+  if (maxNum && maxCon) {
+    localStorage.setItem("userReqest", JSON.stringify({ maxNum, maxCon }));
+    location.href = "./custom.html";
+  } else {
+    alert("数値を入力してください");
+  }
+};
