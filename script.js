@@ -1,20 +1,11 @@
+const toggleCustom = () => 
+  document.querySelectorAll("#custom-maxnum, #custom-maxcon, #submit").forEach(el => el.classList.toggle("show"));
+
+const submitCustom = () => {
+  const [maxNum, maxCon] = ["custom-maxnum", "custom-maxcon"].map(id => +document.getElementById(id).value);
+  maxNum && maxCon
+    ? (localStorage.setItem("userReqest", JSON.stringify({ maxNum, maxCon })), location.href = "./main/custom/custom.html")
+    : alert("数値を入力してください");
+};
+
 localStorage.removeItem("userReqest");
-let customMaxnum = document.getElementById("custom-maxnum");
-let customMove = document.getElementById("custom-move");
-let customSubmit = document.getElementById("submit");
-function custom() {
-  customMaxnum.classList.toggle("show");
-  customMove.classList.toggle("show");
-  customSubmit.classList.toggle("show");
-}
-function submit() {
-  const maxNumValue = customMaxnum.value;
-  const moveValue = customMove.value;
-  if (maxNumValue && moveValue) {
-    let userReqest = { maxNum: maxNumValue, maxMove: moveValue };
-    localStorage.setItem("userReqest", JSON.stringify(userReqest));
-    location.href = "./main/custom/custom.html";
-  } else {
-    alert("数値を入れてください");
-  }
-}

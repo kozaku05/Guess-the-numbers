@@ -1,36 +1,39 @@
-let information = document.getElementById("information");
-let Number = Math.floor(Math.random() * 100) + 1;
-console.log("正解：" + Number);
-let gameMain = document.getElementById("gameMain");
-let questionNumber = document.getElementById("questionNumber");
-let question = 0;
-let finish = document.getElementById("finish");
+const info = document.getElementById("information");
+const gameMain = document.getElementById("gameMain");
+const questionNum = document.getElementById("questionNumber");
+const finish = document.getElementById("finish");
+let secret = Math.floor(Math.random() * 100) + 1, attempts = 0;
+
+console.log("正解：" + secret);
 finish.style.display = "none";
-document.getElementById("data").addEventListener("keydown", function (event) {
-  if (event.key === "Enter") send();
-});
-function send() {
-  let data = document.getElementById("data").value;
-  if (data) {
-    if (data == Number) {
-      gameMain.style.display = "none";
-      finish.style.display = "block";
-      let answer = document.createElement("h2");
-      let QuestionNumber = document.createElement("h2");
-      QuestionNumber.innerHTML = `あなたの質問回数:${question}`;
-      answer.innerHTML = innerHTML = `<h2>正解!答えは:${Number}</h2>`;
-      finish.appendChild(answer);
-      finish.appendChild(QuestionNumber);
-    } else if (data < Number) {
-      question += 1;
-      questionNumber.innerHTML = question;
-      information.innerHTML = "値が小さいです";
-    } else {
-      question += 1;
-      questionNumber.innerHTML = question;
-      information.innerHTML = "値が大きいです";
-    }
+
+document.getElementById("data").addEventListener("keydown", (e) => e.key === "Enter" && send());
+
+const send = () => {
+  const input = Number(document.getElementById("data").value);
+  if (!input) return (info.textContent = "数字を入力してください");
+
+  attempts++;
+  questionNum.textContent = attempts;
+
+  if (input === secret) {
+    gameMain.style.display = "none";
+    finish.style.display = "block";
+    finish.innerHTML = `<h2>正解! 答えは: ${secret}</h2><h2>あなたの質問回数: ${attempts}</h2>`;
   } else {
-    information.innerHTML = "数字を入力してください";
+    info.textContent = input < secret ? "値が小さいです" : "値が大きいです";
   }
-}
+};
+
+const toggleCustom = () =>
+  document.querySelectorAll("#custom-maxnum, #custom-maxcon, #submit")
+    .forEach(el => el.classList.toggle("show"));
+
+const submitCustom = () => {
+  const [maxNum, maxCon] = ["custom-maxnum", "custom-maxcon"].map(id => +document.getElementById(id).value);
+  return maxNum && maxCon
+    ? (localStorage.setItem("userRequest", JSON.stringify({ maxNum, maxCon })), location.href = "../custom/custom.html")
+    : alert("数値を入力してください");
+};
+
+localStorage.removeItem("userRequest");
